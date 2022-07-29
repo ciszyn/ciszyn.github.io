@@ -1,0 +1,37 @@
+<div class="index-nav">
+    {% for item in include.nav %}
+    <div>
+        {% if item.subnav %}
+        <input type="checkbox" class="nav-checkbox" id={{item.title}}>
+        <li>
+            <label for={{item.title}} class="nav-label">
+                <div class="nav-icon">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#bbb;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.5px;}</style></defs><g id="ic-chevron-right"><path class="cls-1" d="M9.8,16.78l4.11-4.11a1,1,0,0,0,0-1.41l-4-4"/></g></svg>
+                </div>
+                <div>
+                    {{ item.title }}
+                </div>
+            </label>
+        </li>
+
+        {% else %}
+
+        <li>
+            <div class="nav-label">
+                <div class="nav-icon">
+
+                </div>
+                <a class="nav-link" href="{{ item.url }}">
+                    {{ item.title }}
+                </a>
+            </div>
+        </li>
+
+        {% endif %}
+
+        {% if item.subnav %}
+        {% include nav.html nav=item.subnav %}
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>

@@ -32,5 +32,6 @@ $on-large:         $on-laptop !default;
 // Import pre-styling-overrides hook and style-partials.
 @import
   "minima/base",
-  "minima/layout"
+  "minima/layout",
+  "minima/nav"
 ;

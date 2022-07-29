@@ -25,6 +25,10 @@
   &:visited {
     color: $site-title-color;
   }
+
+  &:hover, &:active {
+    text-decoration: none
+  }
 }
 
 .site-nav {
@@ -148,6 +152,9 @@
 
 .post-link {
   display: block;
+  &:hover, &:active {
+    text-decoration: none
+  }
   @include relative-font-size(1.5);
 }
 

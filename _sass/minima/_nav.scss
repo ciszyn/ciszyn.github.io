@@ -1,0 +1,61 @@
+.index-nav li {
+    list-style: none;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.index-nav .index-nav {
+    margin-left: 20px;
+}
+
+.nav-link {
+
+}
+
+.nav-checkbox {
+    display: none
+}
+
+
+
+.nav-icon {
+
+}
+
+.nav-checkbox:not(:checked) ~ .index-nav {
+    display: none
+}
+
+.nav-icon {
+    font-size: 10px;
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.nav-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.nav-link:active, 
+.nav-link:visited, 
+.nav-link:hover, 
+.nav-link:link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.nav-checkbox:checked ~ li .nav-label .nav-icon {
+    transform: rotate(90deg);
+}
