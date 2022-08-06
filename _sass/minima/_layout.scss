@@ -26,7 +26,8 @@
     color: $site-title-color;
   }
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     text-decoration: none
   }
 }
@@ -52,7 +53,7 @@
     padding-top: 10px;
     text-align: center;
 
-    > svg path {
+    >svg path {
       fill: $border-color-03;
     }
   }
@@ -66,12 +67,12 @@
     cursor: pointer;
   }
 
-  input ~ .trigger {
+  input~.trigger {
     clear: both;
     display: none;
   }
 
-  input:checked ~ .trigger {
+  input:checked~.trigger {
     display: block;
     padding-bottom: 5px;
   }
@@ -86,6 +87,7 @@
     &:not(:last-child) {
       margin-right: 0;
     }
+
     margin-left: 20px;
   }
 
@@ -103,7 +105,7 @@
       display: none;
     }
 
-    input ~ .trigger {
+    input~.trigger {
       display: block;
     }
 
@@ -114,6 +116,7 @@
       &:not(:last-child) {
         margin-right: 20px;
       }
+
       margin-left: auto;
     }
   }
@@ -140,7 +143,7 @@
   margin-left: 0;
   list-style: none;
 
-  > li {
+  >li {
     margin-bottom: $spacing-unit;
   }
 }
@@ -152,9 +155,12 @@
 
 .post-link {
   display: block;
-  &:hover, &:active {
+
+  &:hover,
+  &:active {
     text-decoration: none
   }
+
   @include relative-font-size(1.5);
 }
 
@@ -181,8 +187,17 @@
 .post-content {
   margin-bottom: $spacing-unit;
 
-  h1, h2, h3 { margin-top: $spacing-unit * 2 }
-  h4, h5, h6 { margin-top: $spacing-unit }
+  h1,
+  h2,
+  h3 {
+    margin-top: $spacing-unit * 2
+  }
+
+  h4,
+  h5,
+  h6 {
+    margin-top: $spacing-unit
+  }
 
   h2 {
     @include relative-font-size(1.75);
@@ -207,6 +222,7 @@
   h5 {
     @include relative-font-size(1.125);
   }
+
   h6 {
     @include relative-font-size(1.0625);
   }
@@ -216,15 +232,23 @@
 .social-media-list {
   display: table;
   margin: 0 auto;
+
   li {
     float: left;
     margin: 5px 10px 5px 0;
-    &:last-of-type { margin-right: 0 }
+
+    &:last-of-type {
+      margin-right: 0
+    }
+
     a {
       display: block;
       padding: $spacing-unit / 4;
       border: 1px solid $border-color-01;
-      &:hover { border-color: $border-color-02 }
+
+      &:hover {
+        border-color: $border-color-02
+      }
     }
   }
 }
@@ -237,12 +261,16 @@
 .pagination {
   margin-bottom: $spacing-unit;
   @extend .social-media-list;
+
   li {
-    a, div {
+
+    a,
+    div {
       min-width: 41px;
       text-align: center;
       box-sizing: border-box;
     }
+
     div {
       display: block;
       padding: $spacing-unit / 4;
@@ -265,4 +293,10 @@
   .one-half {
     width: calc(50% - (#{$spacing-unit} / 2));
   }
+}
+
+canvas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
