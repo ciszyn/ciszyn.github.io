@@ -1,0 +1,27 @@
+@import '../sass/variables';
+
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-nav {
+    padding: 1rem 5rem 1rem 2rem;
+    font-size: 2rem;
+    border-bottom: 1px solid $color-grey-dark;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button {
+    background-color: transparent;
+    font-size: 2rem;
+    border-style: none;
+    color: inherit;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
