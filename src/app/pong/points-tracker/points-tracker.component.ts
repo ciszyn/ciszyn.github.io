@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { AuthService } from 'src/app/services/auth.service';
 import { Point } from '../models/point';
 import { PointsService } from '../services/points.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-points-tracker',
@@ -32,7 +34,7 @@ export class PointsTrackerComponent implements OnInit {
     }
   ]
 
-  constructor(private pointsService: PointsService) {
+  constructor(private pointsService: PointsService, private auth: AuthService) {
     Chart.register(...registerables);
   }
 
@@ -93,7 +95,6 @@ export class PointsTrackerComponent implements OnInit {
         datasets.push(dataset);
         cumulativeDatasets.push(cumulativeDataset);
       });
-      console.log(this.users);
       this.chart?.destroy();
       this.chart = new Chart(barCanvasEle, {
         type: 'line',
@@ -157,10 +158,22 @@ export class PointsTrackerComponent implements OnInit {
   }
 
   async newPoint(name: string): Promise<void> {
-    this.pointsService.postPoint(new Point(name, new Date().toISOString()))
+    this.auth.user$.pipe(first()).subscribe(u => {
+      if (u == null) {
+        this.auth.login();
+      } else {
+        this.pointsService.postPoint(new Point(name, new Date().toISOString()));
+      }
+    })
   }
 
   async undo() {
-    this.pointsService.undo();
+    this.auth.user$.pipe(first()).subscribe(u => {
+      if (u == null) {
+        this.auth.login();
+      } else {
+        this.pointsService.undo();
+      }
+    })
   }
 }
