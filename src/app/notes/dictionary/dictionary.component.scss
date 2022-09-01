@@ -1,0 +1,62 @@
+@import "../../../sass/variables";
+
+.dictionary {
+    margin: 5rem auto 5rem auto;
+    padding: 0 1rem 0 1rem;
+    max-width: 30rem;
+    font-size: 2rem;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.dictionary-input {
+    background-color: transparent;
+    border-color: transparent;
+    width: 10rem;
+    color: inherit;
+    font-size: inherit;
+
+    &:focus {
+        outline: none !important;
+        border-color: transparent;
+    }
+
+    &--translation {
+        text-align: right;
+    }
+
+    &--text::placeholder {
+        color: inherit;
+    }
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    margin-left: 1rem;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+}
+
+.button-icon {
+    stroke: $text-color;
+
+    &-x {
+        fill: $text-color;
+    }
+}
+
+.translation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

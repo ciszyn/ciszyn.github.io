@@ -6,7 +6,7 @@
 }
 
 .main-nav {
-    padding: 1rem 5rem 1rem 2rem;
+    padding: 1rem 3rem 1rem 2rem;
     font-size: 2rem;
     border-bottom: 1px solid $color-grey-dark;
     display: flex;
@@ -24,4 +24,13 @@
         text-decoration: underline;
         cursor: pointer;
     }
+
+    &--others:not(:last-child) {
+        margin-right: 3rem;
+    }
+}
+
+.other-options {
+    display: flex;
+
 }
