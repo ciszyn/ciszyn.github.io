@@ -6,6 +6,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 
 
@@ -18,7 +19,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forChild([
-      { path: 'notes/dictionary', component: DictionaryComponent }
+      { path: 'notes/dictionary', component: DictionaryComponent, canActivate: [AuthGuardService] }
     ])
   ]
 })
