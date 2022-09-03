@@ -1,0 +1,9 @@
+<div class="nav">
+    <div *ngFor="let site of sites">
+        <button class="nav-button" routerLink="{{site.url}}">
+            {{site.name}}
+        </button>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
