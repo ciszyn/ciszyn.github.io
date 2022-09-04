@@ -1,4 +1,85 @@
 @import '../sass/variables';
+@import '../sass/mixins';
+
+.menu-button {
+    z-index: 2000;
+    height: 4rem;
+    width: 4rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(50%);
+    overflow: visible;
+    display: none;
+
+    @include respond(tab-port) {
+        display: block;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: $color-grey-dark-3
+    }
+}
+
+.menu-icon {
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+        width: 3rem;
+        height: 2px;
+        background-color: $text-color;
+        display: inline-block;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        transition: all .2s;
+    }
+
+    &::before {
+        top: -.9rem;
+    }
+
+    &::after {
+        top: .9rem;
+    }
+}
+
+.navigation {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    background-color: $background-color;
+    transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navigation-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 100%;
+}
+
+.navigation-item {
+    padding: 10rem;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
 
 .page {
     display: flex;
@@ -27,6 +108,10 @@
 
     &--others:not(:last-child) {
         margin-right: 3rem;
+
+        @include respond(tab-port) {
+            display: none;
+        }
     }
 }
 

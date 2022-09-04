@@ -1,5 +1,5 @@
 import { DictionaryService } from './../services/dictionary.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Translation } from '../models/translation';
 
 @Component({
@@ -8,8 +8,7 @@ import { Translation } from '../models/translation';
   styleUrls: ['./dictionary.component.scss']
 })
 export class DictionaryComponent implements OnInit {
-
-  constructor(private service: DictionaryService) { }
+  constructor(private service: DictionaryService, private renderer: Renderer2) { }
 
   public dictionary: Translation[] = [];
   public newWord: string = "";
@@ -25,6 +24,9 @@ export class DictionaryComponent implements OnInit {
     this.service.postTranslation(new Translation(this.newWord, this.newTranslation, this.dictionary.length + 1))
       .then(r => {
         this.newWord = this.newTranslation = ""
+        const element = this.renderer.selectRootElement('#main-input');
+        console.log(element);
+        setTimeout(() => element.focus(), 0);
       })
       .catch(e => {
         console.log("couldn't update item")
@@ -32,11 +34,9 @@ export class DictionaryComponent implements OnInit {
   }
 
   public updateItem(translation: Translation) {
-    this.service.updateTranslation(translation)
+    if (translation.translated == "" || translation.word == "")
+      this.service.deleteTranslation(translation);
+    else
+      this.service.updateTranslation(translation)
   }
-
-  public deleteItem(translation: Translation) {
-    this.service.deleteTranslation(translation)
-  }
-
 }

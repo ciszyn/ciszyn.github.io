@@ -11,8 +11,13 @@ import firebase from 'firebase/compat/app';
 export class AppComponent {
   title = 'ciszyn-github-io';
   public user$: Observable<firebase.User | null>
+  public menuActive = false;
 
   constructor(auth: AuthService) {
     this.user$ = auth.user$
+  }
+
+  public toggleMenu() {
+    this.menuActive = !this.menuActive;
   }
 }
