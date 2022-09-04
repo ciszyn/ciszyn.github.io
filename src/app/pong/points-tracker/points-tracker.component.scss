@@ -87,6 +87,8 @@
 }
 
 .button-undo {
+    transition: all .4s;
+
     &:hover {
         transform: scale(1.05);
     }
@@ -99,6 +101,8 @@
 }
 
 .button-first {
+    transition: all .2s;
+
     &:hover {
         transform: scale(1.05);
     }
@@ -124,6 +128,8 @@
 }
 
 .button-second {
+    transition: all .2s;
+
     &:hover {
         transform: scale(1.05);
     }
