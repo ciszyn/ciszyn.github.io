@@ -39,4 +39,10 @@ export class DictionaryComponent implements OnInit {
     else
       this.service.updateTranslation(translation)
   }
+
+  public filterItem(translation: Translation) {
+    if (translation.word.toLowerCase().includes(this.newWord.toLowerCase()) && translation.translated.toLowerCase().includes(this.newTranslation.toLowerCase()))
+      return true;
+    return false;
+  }
 }

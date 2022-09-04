@@ -20,7 +20,7 @@
         <div class="menu-icon"></div>
       </div>
 
-      <nav class="navigation" [@menuTriggered]="menuActive ? 'closed' : 'opened'">
+      <nav class="navigation" [@menuTriggered]="menuActive ? 'opened' : 'closed'">
         <ul class="navigation-list">
           <li class="navigation-item">
             <button *ngIf="(user$ | async)?.uid == '3dX5m7yG4RStAqweGMXyABECgpI3'" class="button button--others"

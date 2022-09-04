@@ -10,14 +10,16 @@
         </div>
     </div>
 
-    <div class="item" *ngFor="let translation of dictionary">
-        <div class="word">
-            <input class="dictionary-input" type="text" placeholder="word" [(ngModel)]="translation.word"
-                (keyup.enter)="updateItem(translation)">
-        </div>
-        <div class="translation">
-            <input class="dictionary-input dictionary-input--translation" type="text" placeholder="translation"
-                [(ngModel)]="translation.translated" (keyup.enter)="updateItem(translation)">
+    <div *ngFor="let translation of dictionary">
+        <div class="item" *ngIf="filterItem(translation)">
+            <div class="word">
+                <input class="dictionary-input" type="text" placeholder="word" [(ngModel)]="translation.word"
+                    (keyup.enter)="updateItem(translation)">
+            </div>
+            <div class="translation">
+                <input class="dictionary-input dictionary-input--translation" type="text" placeholder="translation"
+                    [(ngModel)]="translation.translated" (keyup.enter)="updateItem(translation)">
+            </div>
         </div>
     </div>
 </div>
