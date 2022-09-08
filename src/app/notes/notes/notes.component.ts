@@ -11,6 +11,10 @@ export class NotesComponent implements OnInit {
     {
       name: "Dictionary",
       url: "dictionary"
+    },
+    {
+      name: "Grammar",
+      url: "tenses"
     }
   ]
 

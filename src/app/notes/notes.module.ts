@@ -8,13 +8,15 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { NotesComponent } from './notes/notes.component';
+import { ItialianTensesComponent } from './itialian-tenses/itialian-tenses.component';
 
 
 
 @NgModule({
   declarations: [
     DictionaryComponent,
-    NotesComponent
+    NotesComponent,
+    ItialianTensesComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,9 @@ import { NotesComponent } from './notes/notes.component';
         path: 'notes', component: NotesComponent, canActivate: [AuthGuardService], children: [
           {
             path: 'dictionary', component: DictionaryComponent, canActivate: [AuthGuardService]
+          },
+          {
+            path: 'tenses', component: ItialianTensesComponent, canActivate: [AuthGuardService]
           }
         ]
       },

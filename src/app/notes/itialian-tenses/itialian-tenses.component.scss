@@ -1,0 +1,38 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+.grammar {
+    margin: 5rem auto 5rem auto;
+    padding: 0 1rem 0 1rem;
+    max-width: 50rem;
+    font-size: 2rem;
+
+    @include respond(tab-port) {
+        font-size: 1.5rem;
+    }
+}
+
+.heading {
+    margin-bottom: 5rem;
+}
+
+.tense-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    div {
+        padding: 1rem 2rem 1rem 2rem;
+    }
+}
+
+.table-heading {
+    background-color: $color-grey-dark-3;
+}
+
+.first-row {
+    background-color: #252525;
+}
+
+.explenation {
+    margin-bottom: 3rem;
+}
