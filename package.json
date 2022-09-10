@@ -41,7 +41,7 @@
     "prettier": "^2.7.1",
     "tslint-angular": "^3.0.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "~4.3.2"
+    "typescript": "~4.8.3"
   },
   "husky": {
     "hooks": {
