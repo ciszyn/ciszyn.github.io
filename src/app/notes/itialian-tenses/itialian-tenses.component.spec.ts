@@ -8,9 +8,8 @@ describe('ItialianTensesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItialianTensesComponent ]
-    })
-    .compileComponents();
+      declarations: [ItialianTensesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

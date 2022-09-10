@@ -3,24 +3,21 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
-  styleUrls: ['./notes.component.scss']
+  styleUrls: ['./notes.component.scss'],
 })
 export class NotesComponent implements OnInit {
-
   public sites = [
     {
-      name: "Dictionary",
-      url: "dictionary"
+      name: 'Dictionary',
+      url: 'dictionary',
     },
     {
-      name: "Grammar",
-      url: "tenses"
-    }
-  ]
+      name: 'Grammar',
+      url: 'tenses',
+    },
+  ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,73 +1,105 @@
 <div class="main-content">
-    <button class="button-first" (click)="newPoint(users[0].name)">
-        <div class="button-inside button-inside-first">
-            <div class="name">
-                {{users[0].name}}
-            </div>
-            <div class="point-count">
-                {{users[0].points}}
-            </div>
-        </div>
-    </button>
+  <button class="button-first" (click)="newPoint(users[0].name)">
+    <div class="button-inside button-inside-first">
+      <div class="name">
+        {{ users[0].name }}
+      </div>
+      <div class="point-count">
+        {{ users[0].points }}
+      </div>
+    </div>
+  </button>
 
-    <button class="button-second" (click)="newPoint(users[1].name)">
-        <div class="button-inside button-inside-second">
-            <div class="name">
-                {{users[1].name}}
-            </div>
-            <div class="point-count">
-                {{users[1].points}}
-            </div>
-        </div>
-    </button>
+  <button class="button-second" (click)="newPoint(users[1].name)">
+    <div class="button-inside button-inside-second">
+      <div class="name">
+        {{ users[1].name }}
+      </div>
+      <div class="point-count">
+        {{ users[1].points }}
+      </div>
+    </div>
+  </button>
 
-    <button class="button-undo" (click)="undo()"><svg width="70px" height="70px" viewBox="0 0 512 512"
-            xmlns="http://www.w3.org/2000/svg">
-            <title>ionicons-v5-b</title>
-            <path class="icon-undo"
-                d="M240,424V328c116.4,0,159.39,33.76,208,96,0-119.23-39.57-240-208-240V88L64,256Z" />
-        </svg></button>
+  <button class="button-undo" (click)="undo()">
+    <svg
+      width="70px"
+      height="70px"
+      viewBox="0 0 512 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>ionicons-v5-b</title>
+      <path
+        class="icon-undo"
+        d="M240,424V328c116.4,0,159.39,33.76,208,96,0-119.23-39.57-240-208-240V88L64,256Z"
+      />
+    </svg>
+  </button>
 </div>
 
 <div *ngIf="pointsToday.length > 0" class="serves-table">
-    <div class="serves-table-first-row">Michał</div>
-    <div class="serves-table-first-row" *ngFor="let point of pointsToday">
-        <svg *ngIf="point.name==users[0].name" width="24px" height="24px" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path class="icon-cross" fill-rule="evenodd"
-                d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z" />
-        </svg>
-    </div>
-    <div class="serves-table-second-row">Sebastian</div>
-    <div class="serves-table-second-row" *ngFor="let point of pointsToday">
-        <svg *ngIf="point.name==users[1].name" width="24px" height="24px" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path class="icon-cross" fill-rule="evenodd"
-                d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z" />
-        </svg>
-    </div>
+  <div class="serves-table-first-row">Michał</div>
+  <div class="serves-table-first-row" *ngFor="let point of pointsToday">
+    <svg
+      *ngIf="point.name == users[0].name"
+      width="24px"
+      height="24px"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        class="icon-cross"
+        fill-rule="evenodd"
+        d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
+      />
+    </svg>
+  </div>
+  <div class="serves-table-second-row">Sebastian</div>
+  <div class="serves-table-second-row" *ngFor="let point of pointsToday">
+    <svg
+      *ngIf="point.name == users[1].name"
+      width="24px"
+      height="24px"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        class="icon-cross"
+        fill-rule="evenodd"
+        d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"
+      />
+    </svg>
+  </div>
 </div>
 
 <div class="charts">
-    <div class="chart-content">
-        <div class="chart-container">
-            <canvas id="chart"></canvas>
-        </div>
+  <div class="chart-content">
+    <div class="chart-container">
+      <canvas id="chart"></canvas>
     </div>
+  </div>
 
-    <div class="chart-content">
-        <div class="chart-container">
-            <canvas id="cumulativeChart"></canvas>
-        </div>
+  <div class="chart-content">
+    <div class="chart-container">
+      <canvas id="cumulativeChart"></canvas>
     </div>
+  </div>
 </div>
 
 <div class="points-table">
-    <div class="points-first-column points-table-header">Date</div>
-    <div class="points-second-column points-table-header">{{users[0].name}}</div>
-    <div class="points-third-column points-table-header">{{users[1].name}}</div>
+  <div class="points-first-column points-table-header">Date</div>
+  <div class="points-second-column points-table-header">
+    {{ users[0].name }}
+  </div>
+  <div class="points-third-column points-table-header">{{ users[1].name }}</div>
 
-    <div class="points-first-column" *ngFor="let day of daysPlayed">{{day}}</div>
-    <div class="points-second-column" *ngFor="let point of users[0].pointsByDay">{{point.value}}</div>
-    <div class="points-third-column" *ngFor="let point of users[1].pointsByDay">{{point.value}}</div>
+  <div class="points-first-column" *ngFor="let day of daysPlayed">
+    {{ day }}
+  </div>
+  <div class="points-second-column" *ngFor="let point of users[0].pointsByDay">
+    {{ point.value }}
+  </div>
+  <div class="points-third-column" *ngFor="let point of users[1].pointsByDay">
+    {{ point.value }}
+  </div>
 </div>

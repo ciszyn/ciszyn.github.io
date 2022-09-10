@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Point } from '../models/point';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+} from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PointsService {
-
   private dbPath = '/points';
   pointsRef: AngularFireList<Point>;
   constructor(private db: AngularFireDatabase) {
@@ -20,11 +22,16 @@ export class PointsService {
     return this.pointsRef.valueChanges();
   }
   public undo(): any {
-    this.pointsRef.query.limitToLast(1).get().then(result => {
-      result.forEach(r => {
-        if (new Date(r.val().time).toDateString() == new Date().toDateString())
-          r.ref.remove();
-      })
-    })
+    this.pointsRef.query
+      .limitToLast(1)
+      .get()
+      .then((result) => {
+        result.forEach((r) => {
+          if (
+            new Date(r.val().time).toDateString() == new Date().toDateString()
+          )
+            r.ref.remove();
+        });
+      });
   }
 }

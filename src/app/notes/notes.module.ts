@@ -10,30 +10,31 @@ import { AuthGuardService } from '../services/auth-guard.service';
 import { NotesComponent } from './notes/notes.component';
 import { ItialianTensesComponent } from './itialian-tenses/itialian-tenses.component';
 
-
-
 @NgModule({
-  declarations: [
-    DictionaryComponent,
-    NotesComponent,
-    ItialianTensesComponent
-  ],
+  declarations: [DictionaryComponent, NotesComponent, ItialianTensesComponent],
   imports: [
     CommonModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forChild([
       {
-        path: 'notes', component: NotesComponent, canActivate: [AuthGuardService], children: [
+        path: 'notes',
+        component: NotesComponent,
+        canActivate: [AuthGuardService],
+        children: [
           {
-            path: 'dictionary', component: DictionaryComponent, canActivate: [AuthGuardService]
+            path: 'dictionary',
+            component: DictionaryComponent,
+            canActivate: [AuthGuardService],
           },
           {
-            path: 'tenses', component: ItialianTensesComponent, canActivate: [AuthGuardService]
-          }
-        ]
+            path: 'tenses',
+            component: ItialianTensesComponent,
+            canActivate: [AuthGuardService],
+          },
+        ],
       },
-    ])
-  ]
+    ]),
+  ],
 })
-export class NotesModule { }
+export class NotesModule {}

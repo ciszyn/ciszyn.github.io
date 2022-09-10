@@ -5,18 +5,14 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 
-
-
 @NgModule({
-  declarations: [
-    PointsTrackerComponent
-  ],
+  declarations: [PointsTrackerComponent],
   imports: [
     CommonModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forChild([
-      { path: 'pong', component: PointsTrackerComponent }
-    ])
-  ]
+      { path: 'pong', component: PointsTrackerComponent },
+    ]),
+  ],
 })
-export class PongModule { }
+export class PongModule {}

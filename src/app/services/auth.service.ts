@@ -4,22 +4,22 @@ import firebase from 'firebase/compat/app';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  user$: Observable<firebase.User | null>
+  user$: Observable<firebase.User | null>;
 
   constructor(private afAuth: AngularFireAuth) {
     this.user$ = afAuth.authState;
-    this.afAuth.getRedirectResult()
-      .then((result) => { });
+    this.afAuth.getRedirectResult().then((result) => {});
   }
 
   login(): Promise<void> {
-    return this.afAuth.setPersistence('none').then(res =>
-      this.afAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
-    )
+    return this.afAuth
+      .setPersistence('none')
+      .then((res) =>
+        this.afAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+      );
   }
 
   logout() {

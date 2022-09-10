@@ -1,7 +1,11 @@
 <div class="nav">
-    <button *ngFor="let site of sites" class="nav-button" routerLink="{{site.url}}">
-        {{site.name}}
-    </button>
+  <button
+    *ngFor="let site of sites"
+    class="nav-button"
+    routerLink="{{ site.url }}"
+  >
+    {{ site.name }}
+  </button>
 </div>
 
 <router-outlet></router-outlet>

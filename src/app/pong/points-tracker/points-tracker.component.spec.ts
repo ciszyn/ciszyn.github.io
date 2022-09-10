@@ -8,9 +8,8 @@ describe('PointsTrackerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PointsTrackerComponent ]
-    })
-    .compileComponents();
+      declarations: [PointsTrackerComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

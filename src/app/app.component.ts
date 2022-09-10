@@ -16,28 +16,30 @@ import {
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('menuTriggered', [
-      state('opened', style({
-        left: 0
-      })),
-      state('closed', style({
-        right: '100vw'
-      })),
-      transition('opened => closed', [
-        animate('.3s')
-      ]),
-      transition('closed => opened', [
-        animate('.3s')
-      ])
-    ])
-  ]
+      state(
+        'opened',
+        style({
+          left: 0,
+        })
+      ),
+      state(
+        'closed',
+        style({
+          right: '100vw',
+        })
+      ),
+      transition('opened => closed', [animate('.3s')]),
+      transition('closed => opened', [animate('.3s')]),
+    ]),
+  ],
 })
 export class AppComponent {
   title = 'ciszyn-github-io';
-  public user$: Observable<firebase.User | null>
+  public user$: Observable<firebase.User | null>;
   public menuActive = false;
 
   constructor(auth: AuthService) {
-    this.user$ = auth.user$
+    this.user$ = auth.user$;
   }
 
   public toggleMenu() {
