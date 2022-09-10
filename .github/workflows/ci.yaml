@@ -21,3 +21,5 @@ jobs:
         with:
           target_branch: main
           build_dir: docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
