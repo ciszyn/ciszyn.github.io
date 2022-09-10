@@ -42,5 +42,6 @@ export class AppComponent {
 
   public toggleMenu() {
     this.menuActive = !this.menuActive;
+
   }
 }
