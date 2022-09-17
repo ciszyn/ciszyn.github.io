@@ -1,0 +1,140 @@
+@import "../../../sass/variables";
+@import '../../../sass/mixins';
+
+.recipe-text {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    margin: 2rem;
+    padding: 1rem;
+    flex-grow: 1;
+    resize: none;
+    touch-action: pan-y !important;
+
+    padding-right: calc(100vw - 100rem);
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    @include respond(tab-port) {
+    }
+}
+
+.recipe {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.view {
+    touch-action: pan-y !important;
+    display: flex;
+    width: 100vw;
+
+    //TODO
+    height: calc(100vh - 5.1rem);
+}
+
+.list {
+    overflow-y: scroll;
+    max-width: 100rem;
+    min-width: 20rem;
+    resize: horizontal;
+    background-color: $background-color;
+
+    @include respond(phone) {
+        position: absolute;
+        min-width: 0;
+        height: calc(100vh - 5.1rem);
+    }
+}
+
+.title-container {
+    display: flex;
+}
+
+.recipe-title {
+    width: 100%;
+    min-width: 0 !important;
+    max-width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: inherit;
+    margin: 1rem 2rem;
+    padding: 1rem;
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.button {
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    padding: .2rem 3rem;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 2rem;
+    &:not(:last-child()) {
+        margin-left: 1rem;
+    }
+
+    &:hover {
+        text-shadow: .4rem .4rem rgba($color-grey-dark, 0.2);
+        transform: translate(-.2rem, -.2rem)
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.list-item {
+    padding: 1rem;
+    font-size: 2rem;
+    border-bottom: 1px solid $color-grey-dark;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+        padding-left: 3rem;
+    }
+}
+
+.list-title {
+    font-size: 3rem;
+    border-bottom: 2px solid $color-grey-dark;
+    padding: 1rem;
+}
+
+.list-title-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 1rem;
+}
+
+.list-filter {
+    background-color: $color-grey-dark-3;
+    border-radius: 10rem;
+    padding: .5rem 1rem;
+    border: none;
+    width: 100%;
+    color: inherit;
+    font-size: 1.5rem;
+}
+
+.new-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: $text-color;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}

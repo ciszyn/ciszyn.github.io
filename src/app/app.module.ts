@@ -1,7 +1,7 @@
+import { RecipesModule } from './recipes/recipes.module';
 import { NotesModule } from './notes/notes.module';
 import { PongModule } from './pong/pong.module';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { BrowserModule, HammerGestureConfig, HammerModule, HAMMER_GESTURE_CONFIG } from "@angular/platform-browser";
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,7 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     PongModule,
     NotesModule,
+    RecipesModule,
     BrowserAnimationsModule,
+    HammerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),

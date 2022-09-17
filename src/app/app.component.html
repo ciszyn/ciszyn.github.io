@@ -8,6 +8,14 @@
       <button
         *ngIf="(user$ | async)?.uid == '3dX5m7yG4RStAqweGMXyABECgpI3'"
         class="button button--others"
+        routerLink="recipes"
+      >
+        Recipes
+      </button>
+
+      <button
+        *ngIf="(user$ | async)?.uid == '3dX5m7yG4RStAqweGMXyABECgpI3'"
+        class="button button--others"
         routerLink="notes/dictionary"
       >
         Notes
@@ -34,6 +42,18 @@
               (click)="toggleMenu()"
             >
               Notes
+            </button>
+          </li>
+
+          <li
+          class="navigation-item"
+          *ngIf="(user$ | async)?.uid == '3dX5m7yG4RStAqweGMXyABECgpI3'">
+            <button
+              class="button button--others"
+              routerLink="recipes"
+              (click)="toggleMenu()"
+            >
+              Recipes
             </button>
           </li>
 
