@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class NotesComponent implements OnInit {
   public sites = [
     {
-      name: 'Dictionary',
+      name: 'Dizionario',
       url: 'dictionary',
     },
     {
-      name: 'Grammar',
+      name: 'Indicativo',
       url: 'tenses',
     },
   ];
