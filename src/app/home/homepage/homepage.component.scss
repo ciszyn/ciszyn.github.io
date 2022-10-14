@@ -1,0 +1,58 @@
+@import '../../../sass/variables';
+@import '../../../sass/mixins';
+
+.container {
+  // padding: 5rem;
+  height: 95vh;
+}
+
+.background {
+  background-color: red;
+  // height: 90vh;
+  height: 100%;
+  background-image: linear-gradient(to right bottom, rgba($color-grey-dark-3,0.7), rgba($color-grey-dark-3,0.7)),
+    url("/assets/forest.jpg");
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  overflow: hidden;
+}
+
+.description {
+  letter-spacing: 3px;
+  position: absolute;
+
+  right: 30rem;
+  top: 15rem;
+  font-size: 8rem;
+
+  @include respond(tab-port) {
+    position: static;
+    margin: 10rem;
+    font-size: 5rem;
+  }
+
+  @include respond(phone) {
+    font-size: 4rem;
+    margin: 5rem;
+  }
+}
+
+.name {
+  margin-bottom: 3rem;
+}
+
+.link {
+  color: inherit;
+  font: inherit;
+  font-size: 5rem;
+  text-decoration: none;
+
+  &:hover {
+    border-bottom: $text-color 3px solid;
+  }
+
+  @include respond(phone) {
+    font-size: 3rem;
+  }
+}

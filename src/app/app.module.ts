@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BrowserModule, HammerGestureConfig, HammerModule, HAMMER_GESTURE_CONFIG } from "@angular/platform-browser";
 import * as Hammer from 'hammerjs';
+import { HomeModule } from './home/home.module';
 
 export class CustomHammerConfig extends HammerGestureConfig {
   options = {
@@ -27,6 +28,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     FormsModule,
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
     PongModule,
     NotesModule,
     RecipesModule,
