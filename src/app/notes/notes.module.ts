@@ -9,9 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { NotesComponent } from './notes/notes.component';
 import { ItialianTensesComponent } from './itialian-tenses/itialian-tenses.component';
+import { RandomComponent } from './random/random.component';
 
 @NgModule({
-  declarations: [DictionaryComponent, NotesComponent, ItialianTensesComponent],
+  declarations: [DictionaryComponent, NotesComponent, ItialianTensesComponent, RandomComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -34,6 +35,11 @@ import { ItialianTensesComponent } from './itialian-tenses/itialian-tenses.compo
           },
         ],
       },
+      {
+        path: 'randomNotes',
+        component: RandomComponent,
+        canActivate: [AuthGuardService]
+      }
     ]),
   ],
 })

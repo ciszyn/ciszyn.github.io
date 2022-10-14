@@ -61,8 +61,10 @@
     display: flex;
     align-items: stretch;
     flex-direction: row;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-inline: max(2rem, 50% - 50rem);
+    // margin-right: max(2rem, 50% -50rem);
+    flex-direction: column;
+    max-width: 100rem;
 
     @media (max-aspect-ratio: 1/1) {
         flex-direction: column;

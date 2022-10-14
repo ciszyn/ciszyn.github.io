@@ -1,0 +1,23 @@
+.note {
+  flex-grow: 1;
+  resize: none;
+  min-height: 50rem;
+  height: 72vh;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  font-size: 2rem;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.content {
+  max-width: 100rem;
+  margin: 10rem auto;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}

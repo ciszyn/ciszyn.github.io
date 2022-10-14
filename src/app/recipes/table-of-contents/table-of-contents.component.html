@@ -15,8 +15,10 @@
                 <input [(ngModel)]="filter" class="list-filter" type="text" placeholder="Filter results">
             </div>
         </div>
-        <div class="list-item" *ngFor="let recipe of getRecipes(); let i = index" (click)="setRecipe(recipe, i)">
+        <div class="list-items">
+          <div class="list-item" *ngFor="let recipe of getRecipes(); let i = index" (click)="setRecipe(recipe, i)">
             {{recipe.title}}
+          </div>
         </div>
     </div>
     <div class="recipe">

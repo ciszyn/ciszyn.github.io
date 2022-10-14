@@ -19,7 +19,7 @@ export class DictionaryComponent implements OnInit {
     private renderer: Renderer2
   ) {}
 
-  public dictionary: Translation[] = [];
+  public dictionary: Translation[] | null = [];
   public newWord: string = '';
   public newTranslation: string = '';
 
@@ -30,29 +30,21 @@ export class DictionaryComponent implements OnInit {
   }
 
   public postItem() {
-    this.service
-      .postTranslation(
-        new Translation(
-          this.newWord,
-          this.newTranslation,
-          this.dictionary.length + 1
-        )
-      )
-      .then((r) => {
-        this.newWord = this.newTranslation = '';
-        const element = this.renderer.selectRootElement('#main-input');
-        console.log(element);
-        setTimeout(() => element.focus(), 0);
-      })
-      .catch((e) => {
-        console.log("couldn't update item");
-      });
+    this.dictionary?.push(new Translation(
+      this.newWord,
+      this.newTranslation,
+      this.dictionary.length + 1
+    ));
+    this.service.updateTranslations(this.dictionary ?? [])
+    this.newWord = this.newTranslation = '';
+    const element = this.renderer.selectRootElement('#main-input');
+    setTimeout(() => element.focus(), 0);
   }
 
-  public updateItem(translation: Translation) {
+  public updateItem(translation: Translation, index: number) {
     if (translation.translated == '' || translation.word == '')
-      this.service.deleteTranslation(translation);
-    else this.service.updateTranslation(translation);
+      this.dictionary?.splice(index, 1)
+    this.service.updateTranslations(this.dictionary ?? []);
   }
 
   public filterItem(translation: Translation) {

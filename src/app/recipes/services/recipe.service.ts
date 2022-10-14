@@ -1,6 +1,6 @@
 import { Recipe } from './../models/recipe';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,20 +9,17 @@ import { map } from 'rxjs/operators';
 })
 export class RecipeService {
   private dbPath = '/recipes';
-  recipeRef: AngularFireList<Recipe[]>;
+  recipeRef: AngularFireObject<Recipe[]>;
 
   constructor(private db: AngularFireDatabase) {
-    this.recipeRef = db.list(this.dbPath);
+    this.recipeRef = db.object(this.dbPath);
   }
 
   public updateRecipes(recipes: Recipe[]) {
-    this.recipeRef.remove();
-    this.recipeRef.push(recipes);
+    this.recipeRef.set(recipes);
   }
 
-  public getRecipes(): Observable<Recipe[]> {
-    return this.recipeRef.valueChanges().pipe(map(r => {
-      return r[0];
-    }));
+  public getRecipes(): Observable<Recipe[] | null> {
+    return this.recipeRef.valueChanges();
   }
 }

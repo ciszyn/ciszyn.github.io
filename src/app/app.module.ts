@@ -13,6 +13,13 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BrowserModule, HammerGestureConfig, HammerModule, HAMMER_GESTURE_CONFIG } from "@angular/platform-browser";
+import * as Hammer from 'hammerjs';
+
+export class CustomHammerConfig extends HammerGestureConfig {
+  options = {
+    inputClass: Hammer.TouchInput
+  }
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +36,12 @@ import { BrowserModule, HammerGestureConfig, HammerModule, HAMMER_GESTURE_CONFIG
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: CustomHammerConfig
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

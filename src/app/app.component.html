@@ -18,10 +18,18 @@
         class="button button--others"
         routerLink="notes/dictionary"
       >
-        Notes
+        Italian
       </button>
 
-      <button class="button button--others" routerLink="pong">Pong</button>
+      <button class="button button--others" routerLink="pong">Ping pong</button>
+
+      <button
+        *ngIf="(user$ | async)?.uid == '3dX5m7yG4RStAqweGMXyABECgpI3'"
+        class="button button--others"
+        routerLink="randomNotes"
+      >
+        Notes
+      </button>
 
       <div class="menu-button" (click)="toggleMenu()">
         <div class="menu-icon"></div>
@@ -41,7 +49,7 @@
               routerLink="notes/dictionary"
               (click)="toggleMenu()"
             >
-              Notes
+              Italian
             </button>
           </li>
 
@@ -63,7 +71,18 @@
               routerLink="pong"
               (click)="toggleMenu()"
             >
-              Pong
+              Ping pong
+            </button>
+          </li>
+
+          <li class="navigation-item"
+            *ngIf="(user$ | async)?.uid == '3dX5m7yG4RStAqweGMXyABECgpI3'">
+            <button
+              class="button button--others"
+              routerLink="randomNotes"
+              (click)="toggleMenu()"
+            >
+              Notes
             </button>
           </li>
         </ul>

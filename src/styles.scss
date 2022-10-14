@@ -28,20 +28,20 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
+    width: 4px;               /* width of the entire scrollbar */
 }
-  
+
 ::-webkit-scrollbar-track {
     background: $color-grey-dark-3;        /* color of the tracking area */
 }
-  
+
 ::-webkit-scrollbar-thumb {
     background-color: $color-grey-dark;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid $color-grey-dark-3;  /* creates padding around scroll thumb */
+    // border-radius: 20px;       /* roundness of the scroll thumb */
+    // border: 1px solid $color-grey-dark-3;  /* creates padding around scroll thumb */
 }
 
-::selection {
-    background-color: $color-black;
-    color: $color-white;
+::-webkit-resizer {
+  display: none;
+  background-color: $color-grey-dark-3;
 }
