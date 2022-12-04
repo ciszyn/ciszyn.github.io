@@ -53,7 +53,10 @@ export class PointsTrackerComponent implements OnInit {
         ).length;
       });
 
-      this.allPoints = points;
+      this.allPoints = points.filter(
+        p => new Date(p.time).getFullYear() === new Date().getFullYear()
+      );
+
       var datasets = <any[]>[];
       var cumulativeDatasets = <any[]>[];
       this.users.forEach((user) => {
@@ -76,7 +79,7 @@ export class PointsTrackerComponent implements OnInit {
         };
 
         var pointCountByDay: { [key: string]: number } = {};
-        points
+        this.allPoints
           .filter((p) => p.name == user.name)
           .forEach((p) => {
             var val: number = pointCountByDay[new Date(p.time).toDateString()];
