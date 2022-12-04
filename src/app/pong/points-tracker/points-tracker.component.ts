@@ -166,7 +166,7 @@ export class PointsTrackerComponent implements OnInit {
         (p: { date: any }) =>
           new Date(p.date).getDate() +
           '.' +
-          new Date(p.date).getMonth() +
+          (new Date(p.date).getMonth() + 1) +
           '.' +
           new Date(p.date).getFullYear()
       );
@@ -183,7 +183,9 @@ export class PointsTrackerComponent implements OnInit {
       if (u == null) {
         this.auth.login();
       } else {
-        this.pointsService.postPoint(new Point(name, new Date().toISOString()));
+        this.pointsService
+          .postPoint(new Point(name, new Date().toISOString()))
+          .then((result: any) => console.log(result));
       }
     });
   }
