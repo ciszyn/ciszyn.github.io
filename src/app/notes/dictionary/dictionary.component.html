@@ -29,7 +29,7 @@
           type="text"
           placeholder="word"
           [(ngModel)]="translation.word"
-          (keyup.enter)="updateItem(translation, i)"
+          (change)="updateItem(translation, i)"
         />
       </div>
       <div class="translation">
@@ -38,7 +38,7 @@
           type="text"
           placeholder="translation"
           [(ngModel)]="translation.translated"
-          (keyup.enter)="updateItem(translation, i)"
+          (change)="updateItem(translation, i)"
         />
       </div>
     </div>

@@ -23,17 +23,13 @@
     </div>
     <div class="recipe">
         <div class="title-container">
-            <input [(ngModel)]="currentRecipe.title" class="form-control recipe-title" type="text" placeholder="Title" spellcheck="false"/>
-
-            <button class="button" (click)="saveRecipe()">
-                Save
-            </button>
+            <input [(ngModel)]="currentRecipe.title" (change)="saveRecipe()" class="form-control recipe-title" type="text" placeholder="Title" spellcheck="false"/>
 
             <button class="button" (click)="deleteRecipe()">
                 Delete
             </button>
         </div>
 
-        <textarea [(ngModel)]="currentRecipe.text" class="recipe-text" placeholder="Write the recipe here..." spellcheck="false"></textarea>
+        <textarea [(ngModel)]="currentRecipe.text" (change)="saveRecipe()" class="recipe-text" placeholder="Write the recipe here..." spellcheck="false"></textarea>
     </div>
 </div>

@@ -18,14 +18,17 @@ export class TableOfContentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getRecipes().subscribe(r => {
-      console.log(r);
-      this.recipes = r ?? []
+      this.recipes = r ?? [];
+      if (this.currentRecipeIndex != -1) {
+        this.currentRecipe = this.recipes[this.currentRecipeIndex];
+      }
     })
   }
 
   public saveRecipe() {
-    if (this.currentRecipeIndex == -1)
-      this.recipes.push(this.currentRecipe);
+    if (this.currentRecipeIndex == -1) {
+      this.currentRecipeIndex = this.recipes.push(this.currentRecipe) - 1;
+    }
 
     this.service.updateRecipes(this.recipes);
   }
