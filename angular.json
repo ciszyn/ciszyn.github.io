@@ -107,7 +107,6 @@
       }
     }
   },
-  "defaultProject": "ciszyn-github-io",
   "cli": {
     "analytics": false
   }
