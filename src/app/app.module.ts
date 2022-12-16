@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, HammerGestureConfig, HammerModule, HAMMER_GESTURE_CONFIG } from "@angular/platform-browser";
 import * as Hammer from 'hammerjs';
 import { HomeModule } from './home/home.module';
+import { StravaModule } from './strava/strava.module';
 
 export class CustomHammerConfig extends HammerGestureConfig {
   options = {
@@ -32,6 +33,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     PongModule,
     NotesModule,
     RecipesModule,
+    StravaModule,
     BrowserAnimationsModule,
     HammerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

@@ -16,6 +16,12 @@ jobs:
           node-version: "16.17"
       - run: npm install
       - run: npm run build
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_SENDER_ID: ${{ secrets.FIREBASE_SENDER_ID}}
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_API_KEY: ${{ secrets.STRAVA_API_KEY }}
       - run: cp docs/index.html docs/404.html
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1

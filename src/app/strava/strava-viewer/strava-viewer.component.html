@@ -1,0 +1,54 @@
+<div class="scroller" (scroll)="onScroll($event)">
+  <div *ngFor="let activity of activities" class="activity" (click)="onClick(activity)">
+    <div class="label speed">
+      <div class="name">
+        Average Speed
+      </div>
+      <div class="value">
+        {{(1/activity.average_speed*1000/60)-(1/activity.average_speed*1000/60)%1}}:<span *ngIf='(1/activity.average_speed*1000/60)%1*60 < 10'>0</span>{{((1/activity.average_speed*1000/60)%1*60)-((1/activity.average_speed*1000/60)%1*60)%1}} /km
+      </div>
+    </div>
+
+    <div class="label distance">
+      <div class="name">
+        Distance
+      </div>
+      <div class="value">
+        {{(activity.distance / 1000).toFixed(2)}} km
+      </div>
+    </div>
+
+    <div class="label duration">
+      <div class="name">
+        Duration
+      </div>
+      <div class="value">
+        <span *ngIf="activity.elapsed_time > 3600">
+          {{activity.elapsed_time / 3600 - ((activity.elapsed_time / 3600) % 1)}}h
+        </span>
+        {{(activity.elapsed_time / 60) % 60 - (activity.elapsed_time / 60) % 60 % 1}}m
+        {{activity.elapsed_time % 60}}s
+      </div>
+    </div>
+
+    <!-- <div class="max-speed">
+      {{(1/activity.max_speed*1000/60)-(1/activity.max_speed*1000/60)%1}}:
+      {{((1/activity.max_speed*1000/60)%1*60)-((1/activity.max_speed*1000/60)%1*60)%1}} /km
+    </div> -->
+
+    <div class="label date">
+      <div class="name">
+        Date
+      </div>
+      <div class="value">
+        {{activity.start_date | date : 'hh:mm dd.MM.yyyy'}}
+      </div>
+    </div>
+
+    <div class="chart-content" *ngIf="selected_activity_id == activity.id">
+      <div class="chart-container">
+        <canvas id="speed-chart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

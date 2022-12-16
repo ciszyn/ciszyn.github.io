@@ -1,0 +1,60 @@
+@import '../../../sass/mixins';
+@import '../../../sass/variables';
+
+.activity {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  padding: 4rem 3rem;
+  margin: 2rem 5rem;
+  background-color: #444;
+  border-radius: 1rem;
+  font-size: 3rem;
+  grid-row-gap: 1rem;
+
+  &:hover {
+    transform: scaleY(1.05) scaleX(1.01);
+    cursor: pointer
+  }
+
+  transition: all .2s;
+
+  @include respond(tab-port) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include respond(phone) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scroller {
+  overflow-y: scroll;
+  height: calc(100vh - 5.1rem);
+}
+
+.chart-content {
+  grid-column: 1 / 5;
+
+  @include respond(tab-port) {
+    grid-column: 1 / 3;
+  }
+  @include respond(phone) {
+    grid-column: 1 / 1;
+  }
+
+  justify-self: stretch;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .name {
+    font-size: 1.5rem;
+    color: #aaa
+  }
+}

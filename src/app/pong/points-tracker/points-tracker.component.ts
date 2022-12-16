@@ -125,14 +125,27 @@ export class PointsTrackerComponent implements OnInit {
           scales: {
             y: {
               min: 0,
+              ticks: {
+                color: "#bbb"
+              }
             },
+            x: {
+              ticks: {
+                color: "#bbb"
+              }
+            }
           },
           plugins: {
             legend: {
               title: {
-                display: true,
-                text: 'Points by day',
+                display: false,
               },
+              labels: {
+                color: "#bbb",
+                font: {
+                  size: 15
+                }
+              }
             },
           },
         },
@@ -152,14 +165,27 @@ export class PointsTrackerComponent implements OnInit {
           scales: {
             y: {
               min: 0,
+              ticks: {
+                color: "#bbb"
+              }
             },
+            x: {
+              ticks: {
+                color: "#bbb"
+              }
+            }
           },
           plugins: {
             legend: {
               title: {
-                display: true,
-                text: 'Cumulative points',
+                display: false,
               },
+              labels: {
+                color: "#bbb",
+                font: {
+                  size: 15
+                }
+              }
             },
           },
         },

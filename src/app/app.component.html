@@ -31,6 +31,14 @@
         Notes
       </button>
 
+      <button
+      *ngIf="(user$ | async)?.uid == '3dX5m7yG4RStAqweGMXyABECgpI3'"
+      class="button button--others"
+      routerLink="strava"
+      >
+        Strava
+      </button>
+
       <div class="menu-button" (click)="toggleMenu()">
         <div class="menu-icon"></div>
       </div>
@@ -85,6 +93,17 @@
               Notes
             </button>
           </li>
+
+          <li class="navigation-item"
+          *ngIf="(user$ | async)?.uid == '3dX5m7yG4RStAqweGMXyABECgpI3'">
+          <button
+            class="button button--others"
+            routerLink="strava"
+            (click)="toggleMenu()"
+          >
+            Strava
+          </button>
+        </li>
         </ul>
       </nav>
     </div>
