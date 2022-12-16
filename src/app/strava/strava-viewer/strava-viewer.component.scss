@@ -25,6 +25,7 @@
 
   @include respond(phone) {
     grid-template-columns: 1fr;
+    margin: 2rem 1rem;
   }
 }
 
@@ -35,6 +36,7 @@
 
 .chart-content {
   grid-column: 1 / 5;
+  width: 100%;
 
   @include respond(tab-port) {
     grid-column: 1 / 3;
@@ -46,6 +48,8 @@
   justify-self: stretch;
   margin-top: 2rem;
   margin-bottom: 2rem;
+
+  overflow-y: hidden;
 }
 
 .label {
