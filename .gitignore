@@ -51,4 +51,4 @@ Thumbs.db
 
 .angular/*
 /docs
-src/environments/environment.ts
+src/secrets
