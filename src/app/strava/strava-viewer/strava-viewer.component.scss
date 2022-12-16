@@ -62,3 +62,7 @@
     color: #aaa
   }
 }
+
+::-webkit-scrollbar {
+  height: 0;               /* width of the entire scrollbar */
+}
