@@ -23,8 +23,13 @@ export class StravaViewerComponent implements OnInit {
   public page_size = 30;
   public all_loaded = false;
   public chart: Chart<'line', number[], number> | null = null;
+  public histogramChart: Chart<'line', number[], number> | null = null;
+  public mean: number = 0;
+  public std: number = 0;
+  public loading_chart = false;
+  public loading_page = false;
 
-  constructor(private oauthService: OAuthService, private http: HttpClient) {
+  constructor(private oauthService: OAuthService, private http: HttpClient, private router: Router) {
     if (!this.oauthService.getAccessToken()){
       this.oauthService.configure(environment.strava);
       this.oauthService.initCodeFlow();
@@ -33,8 +38,35 @@ export class StravaViewerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.http.get<Activity>("https://www.strava.com/api/v3/activities/8226229148").toPromise().then(a => console.log(a));
-    this.http.get<Activity[]>("https://www.strava.com/api/v3/athlete/activities").toPromise().then(a => this.activities = a);
+    this.loading_page = true;
+    this.http.get<Activity[]>("https://www.strava.com/api/v3/athlete/activities").toPromise().then(a => {
+      this.activities = a;
+      var speed_histogram = this.activities.map(a => 1 / a.average_speed * 1000 / 60);
+      speed_histogram.sort();
+
+      var min = speed_histogram[0];
+      var max = speed_histogram[speed_histogram.length-1];
+      const n = 8;
+      var l = (max-min)/n
+      var i = 0;
+
+      var histogram = Array<number>(n).fill(0);
+
+
+      speed_histogram.forEach(v => {
+        while (v > (min + (i+1) * l)) {
+          i++;
+        }
+        histogram[i]++
+      });
+
+      this.mean = speed_histogram.reduce((prev, curr) => prev + curr) / speed_histogram.length;
+      this.std = Math.sqrt(speed_histogram.reduce((prev, curr) => prev + (curr-this.mean)^2) / speed_histogram.length)
+
+      this.createHistogram(histogram, min, max);
+
+      this.loading_page = false;
+    });
   }
 
   ngOnDestroy(): void {
@@ -43,8 +75,7 @@ export class StravaViewerComponent implements OnInit {
 
   onScroll(event: any) {
     // visible height + pixel scrolled >= total height
-    if (event.target.offsetHeight + event.target.scrollTop >= 0.8 * event.target.scrollHeight && !this.loading && !this.all_loaded) {
-      console.log(this.loading);
+    if (event.target.offsetHeight + event.target.scrollTop >= 0.9 * event.target.scrollHeight && !this.loading && !this.all_loaded) {
       this.loading = true;
       this.http.get<Activity[]>("https://www.strava.com/api/v3/athlete/activities", {
         params: {
@@ -68,10 +99,12 @@ export class StravaViewerComponent implements OnInit {
       return;
     }
     this.selected_activity_id = activity.id
+    this.loading_chart = true;
 
     this.http.get<Activity>("https://www.strava.com/api/v3/activities/" + activity.id).toPromise().then(a => {
       activity = a
       this.createChart(activity);
+      this.loading_chart = false;
     });
   }
 
@@ -144,5 +177,73 @@ export class StravaViewerComponent implements OnInit {
         }
       },
     });
+  }
+
+  createHistogram(histogram: number[], min: number, max: number)
+  {
+    var dataset = {
+      fill: false,
+      label: "data",
+      borderColor: "#bbb",
+      backgroundColor: "#bbb",
+      borderWidth: 2,
+      data: histogram,
+      tension: 0.3,
+      barPercentage: 1,
+      categoryPercentage: 1,
+    };
+
+    var labels = Array<number>(histogram.length + 1).fill(0).map((val, i) => min + (i + 0.5) * (max - min) / histogram.length);
+
+    var element: any = document.getElementById('histogram-chart');
+    this.histogramChart = new Chart(element, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [dataset],
+      },
+      options: {
+        elements: {
+          point:{
+              radius: 0
+          }
+        },
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            offset: false,
+            grid: {
+              offset: false
+            },
+            ticks: {
+              stepSize: (max - min) / (histogram.length),
+              callback: (value, index, ticks) => {
+                var converted =  parseFloat(value.toString());
+                var minutes = converted - converted%1;
+                var seconds = (converted - minutes)*60;
+                seconds = seconds - seconds%1;
+                if (seconds < 10)
+                  return minutes + ":0" + seconds;
+                else
+                return minutes + ":" + seconds;
+              }
+            },
+
+          },
+        }
+      },
+    });
+  }
+
+  logout()
+  {
+    this.oauthService.logOut();
+    this.router.navigate(["/"]);
   }
 }

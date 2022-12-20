@@ -1,0 +1,62 @@
+.rectangle {
+  margin: auto;
+  background-color: #bbb;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  display: inline-block;
+  border-radius: .2rem;
+  background-color: #ccc;
+  opacity: 50%;
+}
+
+.spinner {
+  position: relative;
+  display: inline-block;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+}
+
+.rectangle-1 {
+  animation: 2s linear -1.5s normal none infinite running animation-1;
+}
+
+.rectangle-2 {
+  animation: 2s linear -1.0s normal none infinite running animation-1;
+}
+
+.rectangle-3 {
+  animation: 2s linear -0.5s normal none infinite running animation-1;
+}
+
+.rectangle-4 {
+  animation: 2s linear 0s normal none infinite running animation-1;
+}
+
+@keyframes animation-1 {
+  0% {
+    left: 0%;
+    top: 0%;
+  }
+
+  25% {
+    left: 2rem;
+    top: 0%;
+  }
+
+  50% {
+    left: 2rem;
+    top: 2rem;
+  }
+
+  75% {
+    left: 0%;
+    top: 2rem;
+  }
+
+  100% {
+    left: 0%;
+    top: 0%;
+  }
+}
