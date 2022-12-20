@@ -22,10 +22,13 @@ export class DictionaryComponent implements OnInit {
   public dictionary: Translation[] | null = [];
   public newWord: string = '';
   public newTranslation: string = '';
+  public loading = false;
 
   ngOnInit(): void {
+    this.loading = true;
     this.service.getTranslations().subscribe((d) => {
       this.dictionary = d;
+      this.loading = false;
     });
   }
 

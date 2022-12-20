@@ -10,12 +10,14 @@ import { AuthGuardService } from '../services/auth-guard.service';
 import { NotesComponent } from './notes/notes.component';
 import { ItialianTensesComponent } from './itialian-tenses/itialian-tenses.component';
 import { RandomComponent } from './random/random.component';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [DictionaryComponent, NotesComponent, ItialianTensesComponent, RandomComponent],
   imports: [
     CommonModule,
     FormsModule,
+    ComponentsModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forChild([
       {

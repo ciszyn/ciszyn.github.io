@@ -21,6 +21,10 @@
     </div>
   </div>
 
+  <div *ngIf="loading" class="spinner-container">
+    <spinner></spinner>
+  </div>
+
   <div *ngFor="let translation of dictionary; let i = index">
     <div class="item" *ngIf="filterItem(translation)">
       <div class="word">

@@ -215,6 +215,12 @@ export class StravaViewerComponent implements OnInit {
           },
         },
         scales: {
+          y: {
+            min: 0,
+            ticks: {
+              color: "#bbb"
+            }
+          },
           x: {
             type: 'linear',
             offset: false,
@@ -232,7 +238,8 @@ export class StravaViewerComponent implements OnInit {
                   return minutes + ":0" + seconds;
                 else
                 return minutes + ":" + seconds;
-              }
+              },
+              color: "#bbb"
             },
 
           },
